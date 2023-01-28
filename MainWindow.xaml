@@ -57,6 +57,7 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+
             </Grid.RowDefinitions>
             <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="Статистика за день" FontSize="25" HorizontalAlignment="Center" Padding="0,0,0,0"></Label>
             <Label Grid.Column="0" Grid.Row="1"  FontSize="25" HorizontalAlignment="Center" Content="Продажи товаров" Padding="0,0,0,0"></Label>
@@ -72,6 +73,12 @@
             <Label  FontSize="25" Grid.Column="0" Grid.Row="6"  Content="Самый популярный товар" HorizontalAlignment="Center" Padding="0,0,0,0"></Label>
             <Label x:Name="StatBestProduct"  Grid.Row="6" Grid.Column="1" FontSize="25"   HorizontalAlignment="Center" Padding="0,0,0,0"></Label>
         </Grid>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+            <Label HorizontalAlignment="Center" Padding="0,0,0,0" Content="Продажи продуктов за день"></Label>
+            <ScrollViewer VerticalScrollBarVisibility="Visible" MaxHeight="150">
+                <TextBlock x:Name="ProductsSellsCell" ></TextBlock>
+            </ScrollViewer>
+        </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
             <Label x:Name="DepartmensCell"  Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Padding="0,0,0,0" Content=""></Label>
         </StackPanel>

@@ -301,6 +301,31 @@ namespace WpfApp12
                 return;
             }
         }
+        private void ShowStatProducts()
+        {
+
+            String sql = "SELECT \r\nProducts.Id\r\n,MAX(Products.Name) AS Name\r\n,SUM(ISNULL(Sales.Cnt, 0)) AS Cnt\r\n,SUM(Products.Price * ISNULL(Sales.Cnt, 0)) AS TotalMoney\r\nFROM Products\r\nLEFT JOIN Sales ON Products.Id = Sales.ID_product\r\nWHERE CAST(GETDATE() AS DATE) = CAST(Sales.Moment AS DATE)\r\nGROUP BY Products.Id\r\nORDER BY COUNT(*) DESC";
+            using var cmd = new SqlCommand(sql, _connection);
+            ProductsSellsCell.Text = "";
+            try
+            {
+                using var reader = cmd.ExecuteReader();
+                var i = 0;
+                while (reader.Read())
+                {
+
+                    var Name = reader.GetString("Name");
+                    var Cnt = reader.GetInt32("Cnt");
+                    var TotalMoney = Math.Round(reader.GetDouble("TotalMoney"), 2);
+                    ProductsSellsCell.Text += $"{++i}. {Name} {Cnt}шт {TotalMoney}$\n";
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -320,7 +345,7 @@ namespace WpfApp12
                 ShowStatTotalMoney();
                 ShowStatBestManager();
                 ShowStatBestDepartment();
-                ShowStatBestProduct();
+                ShowStatProducts();
 
                 ShowDepartmensOrm();
                 ShowProductsOrm();
