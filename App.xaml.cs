@@ -13,5 +13,6 @@ namespace WpfApp12
     /// </summary>
     public partial class App : Application
     {
+        public const String ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cslearn\WpfApp12\Database1.mdf;Integrated Security=True";
     }
 }

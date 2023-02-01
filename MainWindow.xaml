@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WpfApp12"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
+        Closed="Window_Closed"
         Title="MainWindow" Height="750" Width="1200">
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>

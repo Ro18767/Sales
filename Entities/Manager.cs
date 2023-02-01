@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp12.Entities
 {
-    internal class Manager
+    public class Manager
     {
         public Guid Id { get; set; }
 

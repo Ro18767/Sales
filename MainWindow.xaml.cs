@@ -38,8 +38,8 @@ namespace WpfApp12
         public MainWindow()
         {
             InitializeComponent();
-            String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cslearn\WpfApp12\Database1.mdf;Integrated Security=True";
-            _connection = new(connectionString);
+            
+            _connection = new(App.ConnectionString);
         }
         private void ShowDepartmentsCount()
         {
@@ -358,6 +358,14 @@ namespace WpfApp12
             }
 
         }
-       
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            if (_connection?.State == ConnectionState.Open)
+            {
+                _connection.Close();
+            }
+
+        }
     }
 }
