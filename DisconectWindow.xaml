@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp12"
         mc:Ignorable="d"
-        Title="DisconectWindow" Height="500" Width="1200">
-    <Grid ShowGridLines="True">
+        Title="DisconectWindow"  SizeToContent="WidthAndHeight">
+    <Grid ShowGridLines="True" Height="500" Width="1200">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -17,8 +17,8 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" 
                     Grid.Row="0" Grid.Column="0">
-            <Label Height="30">Отделы</Label>
-            <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="220" ItemsSource="{Binding Departments}">
+            <Label Height="25" Padding="0">Отделы</Label>
+            <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" Height="200" ItemsSource="{Binding Departments}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=Id}"></GridViewColumn>
@@ -34,11 +34,12 @@
                     </Style>
                 </ListView.Resources>
             </ListView>
+            <Button  Height="25" Padding="0" Click="Button_Click">добавить</Button>
         </StackPanel>
         <StackPanel Orientation="Vertical" 
                     Grid.Row="1" Grid.Column="0">
-            <Label Height="30">Товары</Label>
-            <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="220" ItemsSource="{Binding Products}">
+            <Label Height="25" Padding="0">Товары</Label>
+            <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" Height="200" ItemsSource="{Binding Products}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=Id}"></GridViewColumn>
@@ -58,8 +59,8 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" 
                     Grid.Row="0" Grid.Column="1">
-            <Label Height="30">Менеджеры</Label>
-            <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="220" ItemsSource="{Binding Managers}">
+            <Label Height="25" Padding="0">Менеджеры</Label>
+            <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" Height="200" ItemsSource="{Binding Managers}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=Id}"></GridViewColumn>

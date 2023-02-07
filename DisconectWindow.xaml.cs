@@ -71,7 +71,7 @@ namespace WpfApp12
                     }
                     reader.Close();
                 }
-                
+
                 {
                     Managers = new();
                     String sql = "SELECT id, surname, name, secname FROM Managers";
@@ -100,11 +100,73 @@ namespace WpfApp12
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
-            if(sender is ListViewItem item)
+            if (sender is ListViewItem item)
             {
-                if(item.Content is Entities.Product department)
+                if (item.Content is Entities.Department department)
                 {
-                    MessageBox.Show(department.GetShortString());
+                    //MessageBox.Show(department.GetShortString());
+
+                    this.Hide();
+                    var window = new CRUD.CRUDDepartment()
+                    {
+                        Department = department
+                    };
+                    var index = Departments.IndexOf(department);
+
+                    Departments.Remove(department);
+                    if (window.ShowDialog().GetValueOrDefault())
+                    {
+                        if(window.Department is null)
+                        {
+                            SqlConnection connection;
+                            connection = new(App.ConnectionString);
+                            try
+                            {
+
+                                connection.Open();
+
+                                String sql = $"DELETE FROM Departments WHERE Id = @id";
+                                using var cmd = new SqlCommand(sql, connection);
+                                cmd.Parameters.AddWithValue("@id", department.Id);
+                                cmd.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                        else
+                        {
+
+
+                            SqlConnection connection;
+                            connection = new(App.ConnectionString);
+                            try
+                            {
+
+                                connection.Open();
+                                String sql = $"UPDATE Departments SET Name = @name WHERE Id = @id";
+                                using var cmd = new SqlCommand(sql, connection);
+                                cmd.Parameters.AddWithValue("@id", department.Id);
+                                cmd.Parameters.AddWithValue("@name", window.Department.Name);
+                                cmd.ExecuteNonQuery();
+
+                                Departments.Insert(index, window.Department);
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        Departments.Insert(index, window.Department);
+                    }
+                    this.Show();
                 }
             }
         }
@@ -129,6 +191,38 @@ namespace WpfApp12
                     MessageBox.Show(manager.GetShortString());
                 }
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            var window = new CRUD.CRUDDepartment();
+            if (window.ShowDialog().GetValueOrDefault())
+            {
+                SqlConnection connection;
+                connection = new(App.ConnectionString);
+                try
+                {
+
+                    connection.Open();
+
+
+                    String sql = $"INSERT INTO Departments (Id, Name) VALUES (@id, @name)";
+                    using var cmd = new SqlCommand(sql, connection);
+                    cmd.Parameters.AddWithValue("@id", window.Department.Id);
+                    cmd.Parameters.AddWithValue("@name", window.Department.Name);
+                    cmd.ExecuteNonQuery();
+                    Departments.Add(window.Department);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            } else
+            {
+                MessageBox.Show("cancel");
+            }
+            this.Show();
         }
     }
 }

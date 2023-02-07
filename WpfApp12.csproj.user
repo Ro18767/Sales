@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="CRUD\CRUDDepartment.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DisconectWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,6 +18,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="CRUD\CRUDDepartment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DisconectWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
