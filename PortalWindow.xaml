@@ -12,6 +12,7 @@
         </Label>
         <Button Margin="10" Content="1. Присоедененый Режим" Click="Button_Click"></Button>
         <Button Margin="10" Content="2. Отсоедененый Режим" Click="Button_Click_1"></Button>
+        <Button Margin="10" Content="3. LINQ Режим" Click="Button_Click_2"></Button>
         
     </StackPanel>
 </Window>

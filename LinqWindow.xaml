@@ -19,6 +19,9 @@
             <Button x:Name="ByPrice_Less200" Content="ByPrice_Less200" Margin="10" Click="ByPrice_Less200_Click"/>
             <Button x:Name="WithG" Content="WithG" Margin="10" Click="WithG_Click"/>
             <Button x:Name="WithOV" Content="WithOV" Margin="10" Click="WithOV_Click"/>
+            <Button x:Name="ManagerJoinDepartment" Content="ManagerJoinDepartment" Margin="10" Click="ManagerJoinDepartment_Click"/>
+            <Button x:Name="ManagerJoinChief" Content="ManagerJoinChief" Margin="10" Click="ManagerJoinChief_Click"/>
+            <Button x:Name="ManagerJoinDepartmentJoinChief" Content="ManagerJoinDepartmentJoinChief" Margin="10" Click="ManagerJoinDepartmentJoinChief_Click"/>
         </StackPanel>
         <TextBlock Grid.Column="1" x:Name="textBlock1"/>
     </Grid>

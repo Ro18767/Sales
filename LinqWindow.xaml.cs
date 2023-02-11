@@ -120,6 +120,65 @@ namespace WpfApp12
             }
             textBlock1.Text += "\n" + query.Count() + " Total";
         }
+        private void ManagerJoinDepartment_Click(object sender, RoutedEventArgs e)
+        {
+            var query = context.Managers.Join(
+                context.Departments,          
+                m => m.Id_main_dep,           
+                d => d.Id,                    
+                (m, d) =>                     
+                    new { Manager = m.Surname + " " + m.Name, Department = d.Name });
+
+            textBlock1.Text = "";
+            foreach (var item in query)
+            {
+                textBlock1.Text += item.Manager + " - " + item.Department + "\n";
+            }
+            textBlock1.Text += "\n" + query.Count() + " Total";
+        }
+        private void ManagerJoinChief_Click(object sender, RoutedEventArgs e)
+        {
+            var query = context.Managers.Join(
+                context.Managers,
+                m => m.Id_chief,
+                c => c.Id,
+                (m, c) =>
+                    new { Manager = m.Surname + " " + m.Name, Chief = c.Surname + " " + c.Name });
+
+            textBlock1.Text = "";
+            foreach (var item in query)
+            {
+                textBlock1.Text += item.Manager + " - " + item.Chief + "\n";
+            }
+            textBlock1.Text += "\n" + query.Count() + " Total";
+        }
+        private void ManagerJoinDepartmentJoinChief_Click(object sender, RoutedEventArgs e)
+        {
+            var query = context.Managers
+                           .Join(
+                           context.Departments,
+                           m => m.Id_main_dep,
+                           d => d.Id,
+                           (m, d) =>
+                               new { Manager = m, Department = d })
+                           .Join(
+                           context.Managers,
+                           m => m.Manager.Id_chief,
+                           c => c.Id,
+                           (m, c) =>
+                               new {
+                                   Manager = m.Manager.Surname + " " + m.Manager.Name,
+                                   Department = m.Department.Name,
+                                   Chief = c.Surname + " " + c.Name
+                               });
+
+            textBlock1.Text = "";
+            foreach (var item in query)
+            {
+                textBlock1.Text += item.Manager + " - " + item.Department + " - " + item.Chief + "\n";
+            }
+            textBlock1.Text += "\n" + query.Count() + " Total";
+        }
     }
 }
 
