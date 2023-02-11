@@ -10,7 +10,16 @@
     <Compile Update="CRUD\CRUDDepartment.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="CRUD\CRUDManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CRUD\CRUDProduct.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DisconectWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="LinqWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="PortalWindow.xaml.cs">
@@ -21,7 +30,16 @@
     <Page Update="CRUD\CRUDDepartment.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="CRUD\CRUDManager.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CRUD\CRUDProduct.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DisconectWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="LinqWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

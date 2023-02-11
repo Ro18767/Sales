@@ -1,0 +1,95 @@
+﻿<Window x:Class="WpfApp12.CRUD.CRUDManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp12.CRUD"
+        mc:Ignorable="d"
+        Title="CRUDManager" SizeToContent="WidthAndHeight"
+        Loaded="Window_Loaded">
+    <StackPanel Orientation="Vertical" Margin="10" Width="600">
+        <Label Content="Даные о сотруднике" HorizontalAlignment="Center"
+               FontSize="30" FontWeight="DemiBold"/>
+        <Grid Margin="70 30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Id:" Grid.Row="0" Grid.Column="0"
+                   FontSize="18"/>
+            <Label Content="Surname:" Grid.Row="1" Grid.Column="0"
+                   FontSize="18"/>
+            <Label Content="Name:" Grid.Row="2" Grid.Column="0"
+                   FontSize="18"/>
+            <Label Content="Secname:" Grid.Row="3" Grid.Column="0"
+                   FontSize="18"/>
+            <Label Content="Departament:" Grid.Row="4" Grid.Column="0"
+                   FontSize="18"/>
+            <Label Content="Secondary Departament:" Grid.Row="5" Grid.Column="0"
+                   FontSize="18"/>
+            <Label Content="Chief:" Grid.Row="6" Grid.Column="0"
+                   FontSize="18"/>
+            <TextBox x:Name="ManagerId" Grid.Row="0" Grid.Column="1" 
+                     IsEnabled="False" Margin="0 5"/>
+            <TextBox x:Name="ManagerSurname" Grid.Row="1" Grid.Column="1" 
+                     IsEnabled="True" Margin="0 5"/>
+            <TextBox x:Name="ManagerName" Grid.Row="2" Grid.Column="1" 
+                     IsEnabled="True" Margin="0 5"/>
+            <TextBox x:Name="ManagerSecname" Grid.Row="3" Grid.Column="1" 
+                     IsEnabled="True" Margin="0 5"/>
+
+            <ComboBox Name="ManagerDepartment" ItemsSource="{Binding Departments}" Grid.Row="4" Grid.Column="1">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Name="ManagerSecondaryDepartment" ItemsSource="{Binding Departments}" Grid.Row="5" Grid.Column="1">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <ComboBox Name="ManagerChief" ItemsSource="{Binding Managers}" Grid.Row="6" Grid.Column="1">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Surename}" />
+                            <TextBlock Text=" " />
+                            <TextBlock Text="{Binding Path=Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Grid.Column="2" Content="Сбросить" Grid.Row="4" Click="Button_Click"/>
+            <Button Grid.Column="2" Content="Сбросить" Grid.Row="5" Click="Button_Click_1"/>
+            <Button Grid.Column="2" Content="Сбросить" Grid.Row="6" Click="Button_Click_2"/>
+
+        </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="ButtonSave" Content="Сохранить" Margin="30 0" Padding="10 4" 
+                    Click="ButtonSave_Click"/>
+            <Button x:Name="ButtonDelete" Content="Удалить" Margin="30 0" Padding="10 4" 
+                    Click="ButtonDelete_Click"/>
+            <Button x:Name="ButtonCancel" Content="Отмена"  Margin="30 0" Padding="10 4"
+                    Click="ButtonCancel_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

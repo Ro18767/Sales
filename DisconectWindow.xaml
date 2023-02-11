@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp12"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="DisconectWindow"  SizeToContent="WidthAndHeight">
     <Grid ShowGridLines="True" Height="500" Width="1200">
         <Grid.ColumnDefinitions>
@@ -56,6 +57,7 @@
                     </Style>
                 </ListView.Resources>
             </ListView>
+            <Button  Height="25" Padding="0" Click="Button_Click_1">добавить</Button>
         </StackPanel>
         <StackPanel Orientation="Vertical" 
                     Grid.Row="0" Grid.Column="1">
@@ -78,6 +80,8 @@
                     </Style>
                 </ListView.Resources>
             </ListView>
+            <Button  Height="25" Padding="0" Click="Button_Click_2">добавить</Button>
         </StackPanel>
+        <TextBlock x:Name="textBlock1" Grid.Column="1"   Grid.Row="1" TextWrapping="Wrap" Text="" />
     </Grid>
 </Window>
